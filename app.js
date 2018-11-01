@@ -4,7 +4,7 @@ const app = express()
 app.listen(process.env.PORT || 8080);
 console.log("App Listen to Port" + process.env.PORT || 8080);
 
-setTimeout(() => {
+setTimeout(function () {
     console.log("...")
 }, 5000);
 
