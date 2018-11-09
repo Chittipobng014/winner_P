@@ -47,7 +47,7 @@ app.get('/', function (req, res, next) {
             res.send(200).json({
                 streamingData
             })
-            streaming(psuSensor, streamingData)
+            //streaming(psuSensor, streamingData)
         }).catch(function (err) {
             console.log(err)
         })
