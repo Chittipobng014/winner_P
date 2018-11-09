@@ -10,6 +10,7 @@ app.listen(process.env.PORT || 8080);
 console.log("App Listen to Port" + process.env.PORT || 8080);
 
 app.get('/', function (req, res, next) {
+    console.log('debug')
     var index = 0
     setInterval(function () {
         axios.post('http://data.essand.psu.ac.th/api/3/action/datastore_search', {
