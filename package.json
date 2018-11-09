@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "deploy": "git commit -am 'update and deploy' && git push heroku master"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "axios": "^0.18.0",
     "axios-jsonp": "^1.0.2",
     "axios-jsonp-pro": "^1.1.4",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "nodemon": "^1.18.6"
   }
