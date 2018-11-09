@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "axios-jsonp": "^1.0.2",
     "axios-jsonp-pro": "^1.1.4",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6"
   }
 }

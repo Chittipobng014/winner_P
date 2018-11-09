@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -23,23 +22,48 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <canvas id="battery" width="400" height="400"></canvas>
+
 </body>
 <script>
-    var data = {
-        resource_id: 'c3eeeba4-acb1-4a1f-a982-b3ea0f5ad3c9', // the resource id
-        limit: 5, // get 5 results
-    };
-    $.ajax({
-        url: 'http://data.essand.psu.ac.th/api/3/action/datastore_search',
-        data: data,
-        jsonp: "callback",
-        dataType: 'json',
-        success: function (data) {
-            console.log(data.result)
+    $(document).ready(function () {
+        fetchAPI()
+    })
+
+    function fetchAPI() {
+        var data = {
+            resource_id: 'daf269cb-c383-44d1-aa09-af935bb641e9',
+            limit: 9999
+        };
+        $.ajax({
+            url: 'http://data.essand.psu.ac.th/api/3/action/datastore_search',
+            data: data,
+            jsonp: "callback",
+            dataType: 'json',
+            success: function (data) {
+                createChart(data.result)
+            }
+        });
+    }
+
+    function createChart(result) {
+        var lastIndex = result.records.length - 1
+        var battery1 = result.records[lastIndex]
+        console.log(battery1["Piezometer1(kPa)"])
+        var data = {
+            datasets: [{
+                data: [battery1]
+            }],
+            labels: [
+                'battery1'
+            ]
         }
-    });
-    function callback(){
-        
+        var ctx = document.getElementById('battery').getContext("2d");
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data
+        });
     }
 </script>
 
