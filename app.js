@@ -12,7 +12,7 @@ console.log("App Listen to Port" + process.env.PORT || 8080);
 app.get('/', function (req, res, next) {
     res.send(200)
 })
-
+var index = 0
 setInterval(function () {
     axios.post('http://data.essand.psu.ac.th/api/3/action/datastore_search', {
         "resource_id": "c3eeeba4-acb1-4a1f-a982-b3ea0f5ad3c9",
